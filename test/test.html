@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+    <title>Untitled Document</title>
+    
+</head>
+<body>
+    <script type="text/javascript">   
+        /*
+         * param1 Array 
+         * param2 Array
+         * return true or false
+         */
+        function arraysSimilar(arr1, arr2){
+            if((arr1.length == arr2.length) && (arr1 instanceof Array) && (arr2 instanceof Array)) {
+                var temp1 = new Array(), 
+                    temp2 = new Array();
+                for(var i=0; i<arr1.length; i++) {
+                    if(typeof arr1[i] == "object") {
+                        var type = Object.prototype.toString.apply(arr1[i]);
+                        temp1.push(type);                        
+                    } else {
+                        var type = typeof arr1[i];
+                        temp1.push(type);
+                    }
+                }
+                for(var i=0; i<arr2.length; i++) {
+                    if(typeof arr2[i] == "object") {
+                        var type = Object.prototype.toString.apply(arr1[i]);
+                        temp2.push(type);                        
+                    } else {
+                        var type = typeof arr2[i];
+                        temp2.push(type);
+                    }
+                }
+                console.log(temp1);
+                console.log(temp2);
+                if(temp1.sort() == temp2.sort()) {
+                    return true;
+                } else {
+                    return false;
+                }
+                
+                
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <script src="testData.js"></script>
+</body>
+</html>
